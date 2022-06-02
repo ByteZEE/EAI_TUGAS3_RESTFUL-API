@@ -20,8 +20,7 @@ return new class extends Migration
             $table->integer('nomor_telepon');
             $table->integer('umur');
             $table->string('keluhan_pasien');
-            $table->foreignId('id_dokter');
-            // ->references('id')->on('dokters')->onDelete('cascade');
+            $table->foreignId('id_dokter')->references('id')->on('dokters');
             $table->timestamps();
         });
     }

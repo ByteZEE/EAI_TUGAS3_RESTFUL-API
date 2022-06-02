@@ -7,7 +7,6 @@ use App\Models\Dokter;
 use App\Models\Pasien;
 use App\Models\Pembayaran;
 use App\Models\Petugas;
-use App\Models\Raw;
 use App\Models\Rawat;
 use App\Models\Ruang;
 
@@ -55,7 +54,6 @@ class ApiController extends Controller
         $pasiens->umur = $request->input('umur');
         $pasiens->keluhan_pasien = $request->input('keluhan_pasien');
         $pasiens->id_dokter = $request->input('id_dokter');
-
         $pasiens->save();
         return response()->json($pasiens);
     }
@@ -73,7 +71,7 @@ class ApiController extends Controller
     }
 
     public function updatePasien(Request $request, $id) {
-        $pasiens = Pasien::all($id);
+        $pasiens = Pasien::find($id);
         $pasiens->nama_pasien = $request->input('nama_pasien');
         $pasiens->alamat_pasien = $request->input('alamat_pasien');
         $pasiens->nomor_telepon = $request->input('nomor_telepon');
@@ -107,7 +105,7 @@ class ApiController extends Controller
     }
 
     public function updateRuang(Request $request, $id) {
-        $ruangs = Ruang::all($id);
+        $ruangs = Ruang::find($id);
         $ruangs->nama_ruang = $request->input('nama_ruang');
     
         $ruangs->save();
@@ -138,7 +136,7 @@ class ApiController extends Controller
     }
 
     public function updateRawat(Request $request, $id) {
-        $rawats = Rawat::all($id);
+        $rawats = Rawat::find($id);
         $rawats->id_pasien = $request->input('id_pasien');
         $rawats->id_dokter = $request->input('id_dokter');
         $rawats->id_ruang = $request->input('id_ruang');
@@ -171,7 +169,7 @@ class ApiController extends Controller
     }
 
     public function updatePetugas(Request $request, $id) {
-        $petugas = Petugas::all($id);
+        $petugas = Petugas::find($id);
         $petugas->nama_petugas = $request->input('nama_petugas');
         $petugas->alamat_petugas = $request->input('alamat_petugas');
         $petugas->nomor_telepon = $request->input('nomor_telepon');
@@ -204,7 +202,7 @@ class ApiController extends Controller
     }
 
     public function updatePembayaran(Request $request, $id) {
-        $pembayarans = Pembayaran::all($id);
+        $pembayarans = Pembayaran::find($id);
         $pembayarans->id_pasien = $request->input('id_pasien');
         $pembayarans->id_petugas = $request->input('id_petugas');
         $pembayarans->biaya = $request->input('biaya');

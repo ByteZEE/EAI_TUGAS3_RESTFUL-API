@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('rawats', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_pasien');
-            $table->foreignId('id_dokter');
-            $table->foreignId('id_ruang');
+            $table->foreignId('id_pasien')->references('id')->on('pasiens');
+            $table->foreignId('id_dokter')->references('id')->on('dokters');
+            $table->foreignId('id_ruang')->references('id')->on('ruangs');
             $table->timestamps();
         });
     }
